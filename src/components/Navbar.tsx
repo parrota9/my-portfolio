@@ -1,41 +1,32 @@
-import { Link } from "react-router-dom";
-import TerminalIconSVG from "../assets/terminal.svg?react";
-
 export default function Navbar() {
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
-      <div className="flex items-center justify-between px-6 py-3 bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-full shadow-2xl">
-        {/* Left Side: Logo & Name */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <TerminalIconSVG className="w-6 h-6 text-blue-500" />
-
-          <span className="font-bold text-xl tracking-tight">Zaky H.</span>
-        </Link>
-
-        {/* Center: Nav Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-          <a href="#about" className="hover:text-white transition-colors">
-            About
-          </a>
-          <a href="#stack" className="hover:text-white transition-colors">
-            Stack
-          </a>
-          <a href="#projects" className="hover:text-white transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-white transition-colors">
-            Contact
-          </a>
-        </div>
-
-        {/* Right Side: Action Button */}
-        <a
-          href="mailto:your-email@example.com"
-          className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-        >
-          Email Me
-        </a>
+    <header style={{
+      position: 'sticky',
+      top: 0,
+      zIndex: 50,
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: '24px',
+      padding: '16px 28px',
+      background: 'rgba(27,27,27,0.72)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      borderBottom: '1px solid var(--line)',
+    }}>
+      <a href="#top" className="navlk" style={{ fontWeight: 700, fontSize: '16px', letterSpacing: '-0.02em' }}>
+        zaky hakim
+      </a>
+      <nav className="navlinks" style={{ display: 'flex', gap: '28px', fontFamily: 'var(--mono)', fontSize: '11px', letterSpacing: '0.04em', color: 'var(--muted)' }}>
+        <a href="#about" className="navlk">01&nbsp; About</a>
+        <a href="#experience" className="navlk">02&nbsp; Experience</a>
+        <a href="#projects" className="navlk">03&nbsp; Projects</a>
+        <a href="#cta" className="navlk">04&nbsp; Contact</a>
+      </nav>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--mono)', fontSize: '11px', letterSpacing: '0.04em', color: 'var(--off)' }}>
+        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--green)', boxShadow: '0 0 10px var(--green)' }} />
+        Available for work
       </div>
-    </nav>
+    </header>
   );
 }

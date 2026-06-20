@@ -1,70 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-bg:    #1b1b1b;
+  --color-panel: #161616;
+  --color-card:  #1f1f1f;
+  --color-off:   #f3f1ec;
+  --color-muted: #928f88;
+  --color-green: #9fe870;
+  --color-line:  rgba(243, 241, 236, 0.14);
+  --font-mono:   'JetBrains Mono', ui-monospace, monospace;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg:    #1b1b1b;
+  --panel: #161616;
+  --card:  #1f1f1f;
+  --off:   #f3f1ec;
+  --muted: #928f88;
+  --line:  rgba(243, 241, 236, 0.14);
+  --green: #9fe870;
+  --disp:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--off);
+  font-family: var(--disp);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+::selection { background: #9fe870; color: #111; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.animate-fade-up { animation: fadeUp .7s ease both; }
+
+.lk {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity .2s ease;
 }
-button:hover {
-  border-color: #646cff;
+.lk:hover { opacity: .55; }
+
+.navlk {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity .2s ease;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.navlk:hover { opacity: .55; }
+
+.prow {
+  transition: padding-left .35s cubic-bezier(.2,.7,.2,1), background .35s ease;
+}
+.prow:hover {
+  padding-left: 18px;
+  background: rgba(243, 241, 236, 0.03);
+}
+.prow:hover .parr {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.exrow {
+  transition: padding-left .35s cubic-bezier(.2,.7,.2,1), background .35s ease;
+}
+.exrow:hover {
+  padding-left: 14px;
+  background: rgba(243, 241, 236, 0.03);
+}
+
+@media (max-width: 760px) {
+  .meta3 { flex-direction: column; gap: 14px !important; }
+  .meta3 > div { text-align: left !important; }
+  .split3 { grid-template-columns: 1fr !important; }
+  .exrow-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .ab-grid { grid-template-columns: 1fr !important; }
+  .navlinks { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }

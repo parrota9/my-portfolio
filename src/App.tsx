@@ -1,17 +1,30 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
-import AboutMe from "./pages/AboutMe";
-import EmailMe from "./pages/EmailMe";
+import Hero from "./sections/Hero";
+import About from "./sections/About";
+import Experience from "./sections/Experience";
+import Projects from "./sections/Projects";
+import CTA from "./sections/CTA";
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <CTA />
+    </>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<AboutMe />} />
-          <Route path="email" element={<EmailMe />} />
+          <Route index element={<HomePage />} />
         </Route>
-
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
